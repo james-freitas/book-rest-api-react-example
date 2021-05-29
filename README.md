@@ -1,3 +1,12 @@
+### Prepare frontend
+ - Go to `src/main/frontend` and type `npm install`
+ 
+### Run the application
+ - Start the backend (root) folder: `mvn springboot:run` 
+ - Start the frontend (`src/main/frontend`): `npm start`
+
+### Routes
+
 ### GET
 	http://localhost:8081/rest/books
 ### GET By ID
