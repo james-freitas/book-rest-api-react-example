@@ -1,8 +1,9 @@
 import React from 'react';
-import { Col, Container, Jumbotron, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import './App.css';
 
 import NavigationBar from './components/NavigationBar'
+import Welcome from './components/Welcome'
 
 function App() {
   const marginTop = {
@@ -14,13 +15,7 @@ function App() {
       <Container>
         <Row>
           <Col lg={12} style={marginTop}>
-            <Jumbotron className="bg-dark text-white">
-              <h1>Hello, world!</h1>
-              <p>
-                This is a simple hero unit, a simple jumbotron-style component for calling
-                extra attention to featured content or information.
-              </p>
-            </Jumbotron>
+            <Welcome/>
           </Col>
         </Row>  
       </Container>
