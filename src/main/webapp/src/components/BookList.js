@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Card } from 'react-bootstrap';
 
 
-class BookList extends React.Component {
+export default class BookList extends Component {
   render() {
-    return (<div className="text-white">Book List</div>);
+    return (
+      <Card className={"border border-dark bg-dark text-white"}>
+        <Card.Header>Book List</Card.Header>
+        <Card.Body>
+
+        </Card.Body>
+      </Card>
+    );
   }
 }
-
-export default BookList;
