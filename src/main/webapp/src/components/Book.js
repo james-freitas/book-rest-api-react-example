@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Card, Form, Button, Col } from 'react-bootstrap';
 
-class Book extends React.Component {
+class Book extends Component {
 
   constructor(props) {
     super(props);
