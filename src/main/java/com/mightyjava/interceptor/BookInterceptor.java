@@ -20,21 +20,17 @@ public class BookInterceptor implements HandlerInterceptor {
 		log.info("BookInterceptor - preHandle");
 		boolean flag = true;
 		String method = request.getMethod();
-//		int contentLength =request.getContentLength();
+
 		if(method.equalsIgnoreCase("post") || method.equalsIgnoreCase("put")) {
 			String contentType = request.getContentType();
-			if(contentType != null && !contentType.equalsIgnoreCase("application/json")) {
+			if(contentType != null && !contentType.equalsIgnoreCase("application/json;charset=utf-8")) {
 				flag = false;
 			} 
-//			else if(contentLength <= 2) {
-//				flag = false;
-//			}
 		}
 		if(!flag) {
 			response.sendRedirect("/rest/books/invalid");
 		}
 		return flag;
-		//return HandlerInterceptor.super.preHandle(request, response, handler);
 	}
 	
 	@Override

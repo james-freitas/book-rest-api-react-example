@@ -43,7 +43,7 @@
 	    "author": "Craig Walls",
 	    "coverPhotoURL": "https://images-na.ssl-images-amazon.com/images/I/51gHy16h5TL.jpg",
 	    "isbnNumber": 9789351197997,
-	    "price": 630,
+        "price": 630,
 	    "language": "English"
 	}
 	{

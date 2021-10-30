@@ -45,7 +45,7 @@ export default class BookList extends Component {
               {
                 this.state.books.length === 0 ?
                 <tr align="center">
-                  <td colspan="6">No Books Available.</td>
+                  <td colSpan="6">No Books Available.</td>
                 </tr> :
                 this.state.books.map((book) => (
                   <tr key={book.id}>
