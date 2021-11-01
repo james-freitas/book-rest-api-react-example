@@ -3,6 +3,7 @@ import { Card, Table, Image, Button, ButtonGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faList, faTrash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import MyToast from './MyToast';
 
 export default class BookList extends Component {
 
@@ -25,9 +26,28 @@ export default class BookList extends Component {
       });
   }
 
+  deleteBook = (bookId) => {
+    axios.delete("http://localhost:8081/rest/books/"+bookId)
+      .then(response => {
+        if(response.data != null) {
+          this.setState({"show":true});
+          setTimeout(() => this.setState({"show":false}), 3000);
+          this.setState({
+            books: this.state.books.filter(book => book.id !== bookId)
+          });
+        } else {
+          this.setState({"show":false});
+        }
+      });
+  };
+
   render() {
     return (
-      <Card className={"border border-dark bg-dark text-white"}>
+      <div>
+        <div style={{"display":this.state.show ? "block" : "none"}}>
+            <MyToast children = {{show:this.state.show, message:"Book Deleted Successfully.", type:"danger"}}/>
+        </div>
+        <Card className={"border border-dark bg-dark text-white"}>
         <Card.Header><FontAwesomeIcon icon={faList} /> Book List</Card.Header>
         <Card.Body>
           <Table bordered hover striped variant="dark">
@@ -59,7 +79,7 @@ export default class BookList extends Component {
                     <td>
                       <ButtonGroup>
                         <Button size="sm" variant="outline-primary"><FontAwesomeIcon icon={faEdit} /></Button>{' '}
-                        <Button size="sm" variant="outline-danger"><FontAwesomeIcon icon={faTrash} /></Button>
+                        <Button size="sm" variant="outline-danger" onClick={this.deleteBook.bind(this, book.id)}><FontAwesomeIcon icon={faTrash} /></Button>
                       </ButtonGroup>
                     </td>    
                   </tr>
@@ -71,7 +91,9 @@ export default class BookList extends Component {
           </tbody>
           </Table>
         </Card.Body>
-      </Card>
+        </Card>
+      </div>
+
     );
   }
 }
